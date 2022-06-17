@@ -1,5 +1,6 @@
 package dev.ftb.mods.ftbic.world;
 
+import dev.ftb.mods.ftbic.FTBICConfig;
 import dev.ftb.mods.ftbic.block.FTBICBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -96,7 +97,49 @@ public class OreGeneration {
 		ORE_IRIDIUM_LARGE = PlacementUtils.register("ore_iridium_large", ORE_IRIDIUM_LARGE_CONFIG, rareOrePlacement(9, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))));
 		ORE_IRIDIUM_BURIED = PlacementUtils.register("ore_iridium_buried", ORE_IRIDIUM_BURIED_CONFIG, commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))));
 
-		PLACEMENTS.addAll(List.of(ORE_TIN_UPPER, ORE_TIN_MIDDLE, ORE_TIN_SMALL, ORE_LEAD_UPPER, ORE_LEAD_MIDDLE, ORE_LEAD_SMALL, ORE_ALUMINUM_UPPER, ORE_ALUMINUM_MIDDLE, ORE_ALUMINUM_SMALL, ORE_URANIUM_EXTRA, ORE_URANIUM, ORE_URANIUM_LOWER, ORE_IRIDIUM, ORE_IRIDIUM_LARGE, ORE_IRIDIUM_BURIED));
+		if (FTBICConfig.WORLD_GEN.ORE_TIN.get()) {
+			PLACEMENTS.addAll(List.of(ORE_TIN_UPPER, ORE_TIN_MIDDLE));
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_TIN_SMALL.get()) {
+			PLACEMENTS.add(ORE_TIN_SMALL);
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_LEAD.get()) {
+			PLACEMENTS.addAll(List.of(ORE_LEAD_UPPER, ORE_LEAD_MIDDLE));
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_LEAD_SMALL.get()) {
+			PLACEMENTS.add(ORE_LEAD_SMALL);
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_ALUMINUM.get()) {
+			PLACEMENTS.addAll(List.of(ORE_ALUMINUM_UPPER, ORE_ALUMINUM_MIDDLE));
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_ALUMINUM_SMALL.get()) {
+			PLACEMENTS.add(ORE_ALUMINUM_SMALL);
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_URANIUM.get()) {
+			PLACEMENTS.add(ORE_URANIUM_EXTRA);
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_URANIUM_BURIED.get()) {
+			PLACEMENTS.addAll(List.of(ORE_URANIUM, ORE_URANIUM_LOWER));
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_IRIDIUM_SMALL.get()) {
+			PLACEMENTS.add(ORE_IRIDIUM);
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_IRIDIUM_LARGE.get()) {
+			PLACEMENTS.add(ORE_IRIDIUM_LARGE);
+		}
+
+		if (FTBICConfig.WORLD_GEN.ORE_IRIDIUM_BURIED.get()) {
+			PLACEMENTS.add(ORE_IRIDIUM_BURIED);
+		}
 	}
 
 	/**

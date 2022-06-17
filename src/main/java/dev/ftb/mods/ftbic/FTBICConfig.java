@@ -36,6 +36,7 @@ public class FTBICConfig {
 	public static final Machines MACHINES;
 	public static final Nuclear NUCLEAR;
 	public static final Equipment EQUIPMENT;
+	public static final WorldGen WORLD_GEN;
 	public static final Recipes RECIPES;
 
 	static {
@@ -43,11 +44,45 @@ public class FTBICConfig {
 		MACHINES = new Machines();
 		NUCLEAR = new Nuclear();
 		EQUIPMENT = new Equipment();
+		WORLD_GEN = new WorldGen();
 		RECIPES = new Recipes();
 
 		COMMON_CONFIG = COMMON.build();
 	}
 
+	public static final class WorldGen {
+		public final BooleanValue ORE_TIN;
+		public final BooleanValue ORE_TIN_SMALL;
+		public final BooleanValue ORE_LEAD;
+		public final BooleanValue ORE_LEAD_SMALL;
+		public final BooleanValue ORE_ALUMINUM;
+		public final BooleanValue ORE_ALUMINUM_SMALL;
+		public final BooleanValue ORE_URANIUM;
+		public final BooleanValue ORE_URANIUM_BURIED;
+		public final BooleanValue ORE_IRIDIUM_SMALL;
+		public final BooleanValue ORE_IRIDIUM_LARGE;
+		public final BooleanValue ORE_IRIDIUM_BURIED;
+
+		public WorldGen() {
+			b().push("WorldGen");
+
+			b().push("Ores");
+
+			ORE_TIN = b().comment("Generate tin ore veins").define("Tin ore", true);
+			ORE_TIN_SMALL = b().comment("Generate small tin ore veins").define("Tin ore small", true);
+			ORE_LEAD = b().comment("Generate lead ore veins").define("Lead ore", true);
+			ORE_LEAD_SMALL = b().comment("Generate small lead ore veins").define("Lead ore small", true);
+			ORE_ALUMINUM = b().comment("Generate aluminum ore veins").define("Aluminum ore", true);
+			ORE_ALUMINUM_SMALL = b().comment("Generate small aluminum ore veins").define("Aluminum ore small", true);
+			ORE_URANIUM = b().comment("Generate uranium ore veins").define("Uranium ore", true);
+			ORE_URANIUM_BURIED = b().comment("Generate buried uranium ore veins").define("Uranium ore buried", true);
+			ORE_IRIDIUM_SMALL = b().comment("Generate small iridium ore veins").define("Iridium ore small", true);
+			ORE_IRIDIUM_LARGE = b().comment("Generate large iridium ore veins").define("Iridium ore large", true);
+			ORE_IRIDIUM_BURIED = b().comment("Generate buried iridium ore veins").define("Iridium ore buried", true);
+
+			b().pop().pop();
+		}
+	}
 
 	public static final class Equipment {
 		public final DoubleValue CARBON_ARMOR_CAPACITY;
